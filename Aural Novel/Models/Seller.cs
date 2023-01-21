@@ -20,7 +20,7 @@ namespace Aural_Novel.Models
         {
             this.Books = new HashSet<Book>();
         }
-    
+
         public int sid { get; set; }
         [Required(ErrorMessage = "Enter your first name")]
         [Display(Name = "First Name")]
@@ -41,7 +41,7 @@ namespace Aural_Novel.Models
         [DataType(DataType.PhoneNumber)]
         public string sphone { get; set; }
         public string spic { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
         public virtual Seller Seller1 { get; set; }

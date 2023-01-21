@@ -9,7 +9,7 @@ namespace Aural_Novel.Controllers
 {
     public class SellerController : Controller
     {
-        AuralNovelEntities db = new AuralNovelEntities();
+        AuralNovelEntities1 db = new AuralNovelEntities1();
         // GET: Seller
         public ActionResult Index()
         {

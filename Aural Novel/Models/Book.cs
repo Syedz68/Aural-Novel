@@ -19,11 +19,11 @@ namespace Aural_Novel.Models
         public string booklang { get; set; }
         public string booktype { get; set; }
         public Nullable<decimal> bookprice { get; set; }
+        public byte[] bookaudio { get; set; }
+        public byte[] booktrailer { get; set; }
         public string bookpic { get; set; }
         public Nullable<bool> isnew { get; set; }
         public Nullable<int> sellerid { get; set; }
-        public byte[] bookaudio { get; set; }
-        public byte[] booktrailer { get; set; }
     
         public virtual Seller Seller { get; set; }
     }
