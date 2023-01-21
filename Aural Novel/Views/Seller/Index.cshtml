@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Index</h2>
+    <h3>Welcome</h3>
+    @if (Session["Susername"] != null)
+    {
+        <h4>@Session["Susername"]</h4>
+        <div>
+            @Html.ActionLink("Sign Out", "SellerSignout", "Seller")
+        </div>
+    }
+</body>
+</html>
+
+
+

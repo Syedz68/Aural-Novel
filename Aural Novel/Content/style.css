@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+body{
+	height: 100vh;
+	width: 100%;
+}
+.box, .box2{
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 450px;
+	padding: 30px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+
+.box .close-btn, .box2 .close-btn2{
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 18px;
+	cursor: pointer;
+}
+.box .text, .box2 .text{
+	font-size: 35px;
+	font-weight: 600;
+	text-align: center;
+}
+.box form, .box2 form{
+	margin-top: -3px;
+}
+form label{
+	font-size: 20px;
+}
