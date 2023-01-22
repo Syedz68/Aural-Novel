@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Aural_Novel.Models.Book>
+
+@{
+    ViewBag.Title = "BookGallery";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h2>BookGallery</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bookname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.booklang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.booktype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookpic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isnew)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.booklang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.booktype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookpic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isnew)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.bookid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.bookid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.bookid })
+        </td>
+    </tr>
+}
+
+</table>
