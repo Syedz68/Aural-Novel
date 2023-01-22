@@ -3,56 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Aural Novel</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Aural Novel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Wanna Sell Your Book?", "SellerSignin", "Seller")</li>
-                </ul>
 
-                <ul class="nav navbar-nav" style="float: right !important">
-                    @if (Session["Rusername"] != null)
-                    {
-                        <li><p style="color:#fff; margin-top: 15px">Hello @Session["Rusername"]</p></li>
-                        <li>@Html.ActionLink("Sign Out", "Signout", "Home")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Sign In", "ReaderSignin", "Home")</li>
-                        <li>@Html.ActionLink("Sign Up", "ReaderSignup", "Home")</li>
-                    }
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+    <div class="container">
+        @Html.ActionLink("Aural Novel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Wanna Sell Your Book?", "SellerSignin","Seller", new { area = "" }, new { @class= "nav-link"})</li>
+            </ul>
+            
+            <ul class="nav navbar-nav d-flex" style="float: right !important">
+                @if (Session["Rusername"] != null)
+                {
+                    <li><p style="color:#fff; margin-top: 15px">Hello @Session["Rusername"]</p></li>
+                    <li>@Html.ActionLink("Sign Out", "Signout", "Home")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Sign In", "ReaderSignin", "Home", new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Sign Up", "ReaderSignup", "Home", new { @class = "nav-link" })</li>
+                }
 
 
-                </ul>
-            </div>
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+</nav>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Aural Novel</p>
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/popperCore")
+<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+@RenderSection("scripts", required: false)
 </body>
 </html>

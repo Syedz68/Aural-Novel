@@ -53,7 +53,7 @@ namespace Aural_Novel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SellerSignin(Seller s)
         {
-            var detail = db.Sellers.Where(u => u.semail.Equals(s.semail) && u.spass.Equals(s.spass)).FirstOrDefault();
+            var detail = db.Sellers.FirstOrDefault(u => u.semail.Equals(s.semail) && u.spass.Equals(s.spass));
             if (detail != null)
             {
                 Session["Sid"] = detail.sid.ToString();
