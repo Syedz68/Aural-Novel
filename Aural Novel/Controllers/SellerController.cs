@@ -9,7 +9,8 @@ namespace Aural_Novel.Controllers
 {
     public class SellerController : Controller
     {
-        AuralNovelEntities1 db = new AuralNovelEntities1();
+        AuralNovelEntities db = new AuralNovelEntities();
+        string s = null;
         // GET: Seller
         public ActionResult Index()
         {
@@ -61,7 +62,7 @@ namespace Aural_Novel.Controllers
                 Session["Slname"] = detail.slname.ToString();
                 Session["Susername"] = Session["Sfname"] + " " + Session["Slname"];
 
-                return RedirectToAction("Index", "Seller");
+                return RedirectToAction("SellerDashboard", "Seller");
             }
             else
             {
@@ -73,7 +74,51 @@ namespace Aural_Novel.Controllers
         public ActionResult SellerSignout()
         {
             Session.Clear();
-            return RedirectToAction("Index", "Seller");
+            return RedirectToAction("SellerSignin", "Seller");
+        }
+
+        public ActionResult SellerDashboard()
+        {
+            return View();
+        }
+        public ActionResult AddBook()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddBook(Book b, HttpPostedFileBase file)
+        {
+            string pic = null;
+            if(file != null)
+            {
+                pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/BookPic/"), pic);
+                file.SaveAs(path);
+            }
+            b.bookpic = pic;
+            db.Books.Add(b);
+            db.SaveChanges();
+
+            return RedirectToAction("SellerDashboard", "Seller");
+        }
+
+
+
+        //[HttpPost]
+        public ActionResult BookGallery(Book b)
+        {
+
+            int s = Convert.ToInt32(Session["Sid"]);
+            List<Book> BookList = db.Books.Where(u => u.sellerid == s).ToList();
+
+            db.Dispose();
+            return View(BookList);
+        }
+
+        public ActionResult BookEdit()
+        {
+            return View();
         }
 
     }

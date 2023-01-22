@@ -11,19 +11,41 @@ namespace Aural_Novel.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Book
     {
         public int bookid { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Name")]
         public string bookname { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Language")]
         public string booklang { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Type")]
         public string booktype { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Price")]
         public Nullable<decimal> bookprice { get; set; }
-        public byte[] bookaudio { get; set; }
-        public byte[] booktrailer { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Pic")]
+
         public string bookpic { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Feature")]
         public Nullable<bool> isnew { get; set; }
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Added By")]
         public Nullable<int> sellerid { get; set; }
+        //[Required(ErrorMessage = "Required")]
+        [Display(Name = "Audio File")]
+        public byte[] bookaudio { get; set; }
+        //[Required(ErrorMessage = "Required")]
+        [Display(Name = "Trailer Of Audio")]
+        public byte[] booktrailer { get; set; }
+
     
         public virtual Seller Seller { get; set; }
     }
