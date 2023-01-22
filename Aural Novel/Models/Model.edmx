@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AuralNovelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AuralNovelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="bookid" />
@@ -44,7 +44,7 @@
           <Property Name="spass" Type="varchar" MaxLength="50" />
           <Property Name="spic" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK__Book__sellerid__173876EA">
+        <Association Name="FK__Book__sellerid__0DAF0CB0">
           <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -60,12 +60,13 @@
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Book__sellerid__173876EA" Association="Self.FK__Book__sellerid__173876EA">
+          <AssociationSet Name="FK__Book__sellerid__0DAF0CB0" Association="Self.FK__Book__sellerid__0DAF0CB0">
             <End Role="Seller" EntitySet="Seller" />
             <End Role="Book" EntitySet="Book" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AuralNovelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -78,41 +79,39 @@
           <Property Name="booklang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="booktype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="bookprice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bookaudio" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="booktrailer" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="bookpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="isnew" Type="Boolean" />
           <Property Name="sellerid" Type="Int32" />
-          <NavigationProperty Name="Seller" Relationship="Self.FK__Book__sellerid__060DEAE8" FromRole="Book" ToRole="Seller" />
-          <Property Name="bookaudio" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="booktrailer" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK__Book__sellerid__0DAF0CB0" FromRole="Book" ToRole="Seller" />
         </EntityType>
         <EntityType Name="Reader">
           <Key>
             <PropertyRef Name="rid" />
           </Key>
-          <Property Name="rid" Type="Int32" Nullable="false" />
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rfname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rlname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="remail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="rpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rphone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="rpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rpic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Seller">
           <Key>
             <PropertyRef Name="sid" />
           </Key>
-          <Property Name="sid" Type="Int32" Nullable="false" />
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sfname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="slname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="semail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="spass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="sphone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="spass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="spic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Books" Relationship="Self.FK__Book__sellerid__060DEAE8" FromRole="Seller" ToRole="Book" />
-          <NavigationProperty Name="Seller1" Relationship="Self.FK_Seller_Seller" FromRole="Seller" ToRole="Seller1" />
-          <NavigationProperty Name="Seller2" Relationship="Self.FK_Seller_Seller" FromRole="Seller1" ToRole="Seller" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__sellerid__0DAF0CB0" FromRole="Seller" ToRole="Book" />
         </EntityType>
-        <Association Name="FK__Book__sellerid__060DEAE8">
+        <Association Name="FK__Book__sellerid__0DAF0CB0">
           <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,29 +123,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Seller_Seller">
-          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
-          <End Role="Seller1" Type="Self.Seller" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Seller">
-              <PropertyRef Name="sid" />
-            </Principal>
-            <Dependent Role="Seller1">
-              <PropertyRef Name="sid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="AuralNovelEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AuralNovelEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Readers" EntityType="Self.Reader" />
           <EntitySet Name="Sellers" EntityType="Self.Seller" />
-          <AssociationSet Name="FK__Book__sellerid__060DEAE8" Association="Self.FK__Book__sellerid__060DEAE8">
+          <AssociationSet Name="FK__Book__sellerid__0DAF0CB0" Association="Self.FK__Book__sellerid__0DAF0CB0">
             <End Role="Seller" EntitySet="Sellers" />
             <End Role="Book" EntitySet="Books" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Seller_Seller" Association="Self.FK_Seller_Seller">
-            <End Role="Seller" EntitySet="Sellers" />
-            <End Role="Seller1" EntitySet="Sellers" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -154,17 +137,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AuralNovelModelStoreContainer" CdmEntityContainer="AuralNovelEntities">
+        <EntityContainerMapping StorageEntityContainer="AuralNovelModelStoreContainer" CdmEntityContainer="AuralNovelEntities1">
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="AuralNovelModel.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="booktrailer" ColumnName="booktrailer" />
-                <ScalarProperty Name="bookaudio" ColumnName="bookaudio" />
                 <ScalarProperty Name="bookid" ColumnName="bookid" />
                 <ScalarProperty Name="bookname" ColumnName="bookname" />
                 <ScalarProperty Name="booklang" ColumnName="booklang" />
                 <ScalarProperty Name="booktype" ColumnName="booktype" />
                 <ScalarProperty Name="bookprice" ColumnName="bookprice" />
+                <ScalarProperty Name="bookaudio" ColumnName="bookaudio" />
+                <ScalarProperty Name="booktrailer" ColumnName="booktrailer" />
                 <ScalarProperty Name="bookpic" ColumnName="bookpic" />
                 <ScalarProperty Name="isnew" ColumnName="isnew" />
                 <ScalarProperty Name="sellerid" ColumnName="sellerid" />
@@ -178,8 +161,8 @@
                 <ScalarProperty Name="rfname" ColumnName="rfname" />
                 <ScalarProperty Name="rlname" ColumnName="rlname" />
                 <ScalarProperty Name="remail" ColumnName="remail" />
-                <ScalarProperty Name="rpass" ColumnName="rpass" />
                 <ScalarProperty Name="rphone" ColumnName="rphone" />
+                <ScalarProperty Name="rpass" ColumnName="rpass" />
                 <ScalarProperty Name="rpic" ColumnName="rpic" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -191,8 +174,8 @@
                 <ScalarProperty Name="sfname" ColumnName="sfname" />
                 <ScalarProperty Name="slname" ColumnName="slname" />
                 <ScalarProperty Name="semail" ColumnName="semail" />
-                <ScalarProperty Name="spass" ColumnName="spass" />
                 <ScalarProperty Name="sphone" ColumnName="sphone" />
+                <ScalarProperty Name="spass" ColumnName="spass" />
                 <ScalarProperty Name="spic" ColumnName="spic" />
               </MappingFragment>
             </EntityTypeMapping>

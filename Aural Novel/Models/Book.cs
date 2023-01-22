@@ -28,8 +28,10 @@ namespace Aural_Novel.Models
         [Required(ErrorMessage = "Required")]
         [Display(Name = "Price")]
         public Nullable<decimal> bookprice { get; set; }
+
         [Required(ErrorMessage = "Required")]
         [Display(Name = "Pic")]
+
         public string bookpic { get; set; }
         [Required(ErrorMessage = "Required")]
         [Display(Name = "Feature")]
@@ -43,6 +45,7 @@ namespace Aural_Novel.Models
         //[Required(ErrorMessage = "Required")]
         [Display(Name = "Trailer Of Audio")]
         public byte[] booktrailer { get; set; }
+
     
         public virtual Seller Seller { get; set; }
     }
